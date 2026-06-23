@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "俺儿乒乓球",
   description: "决战",
+   icons: {
+    icon: 'https://ibb.co/TqtPqn6B', 
+  },
 };
 
 export default function RootLayout({
