@@ -10,6 +10,10 @@ export default function YX1() {
     const v = cv?.getContext('2d')
     if (!v || !cv) return
 
+    document.fonts.load('10px Zpix').then(() => {
+      i.onload = YX2
+    })
+
     const yy = new Audio('/中国风.mp3')
     yy.loop = true
     const s1 = new Audio('/音效.wav')
@@ -73,7 +77,6 @@ export default function YX1() {
       HH1(ON1 ? m1 : m2, 35, 35, 0.02)
       v.beginPath(); v.arc(35, 75, 14, 0, Math.PI * 2); v.stroke()
       HH1(QP1 ? i2 : i, 35, 75, 0.02)
-      
       v.fillStyle = 'white'; v.textAlign = 'right'; v.font = '36px Zpix'; v.strokeText(`${fsc}`, 340, 50); v.fillText(`${fsc}`, 340, 50)
       if (DX1 > 0) {
         v.save(); v.globalAlpha = DX1; v.font = '24px Zpix'; v.strokeText('+5', 340, 85); v.fillText('+5', 340, 85); v.restore(); DX1 -= 0.02
@@ -108,14 +111,9 @@ export default function YX1() {
 
     cv.addEventListener('mousedown', CZ1); window.addEventListener('mousemove', YD1); window.addEventListener('mouseup', () => MG1 = false)
     cv.addEventListener('touchstart', CZ1, { passive: false }); cv.addEventListener('touchmove', YD1, { passive: false }); cv.addEventListener('touchend', () => MG1 = false)
-    
-    document.fonts.load('36px Zpix').then(() => {
-      i.onload = YX2
-    })
-
     return () => { 
       window.removeEventListener('mousemove', YD1); window.removeEventListener('mouseup', () => MG1 = false)
-      document.removeEventListener('visibilitychange', YY1); yy.pause() 
+      yy.pause() 
     }
   }, [])
 
