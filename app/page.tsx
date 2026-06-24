@@ -73,13 +73,14 @@ export default function YX1() {
       HH1(ON1 ? m1 : m2, 35, 35, 0.02)
       v.beginPath(); v.arc(35, 75, 14, 0, Math.PI * 2); v.stroke()
       HH1(QP1 ? i2 : i, 35, 75, 0.02)
-      v.fillStyle = 'white'; v.textAlign = 'right'; v.font = '36px sans-serif'; v.strokeText(`${fsc}`, 340, 50); v.fillText(`${fsc}`, 340, 50)
+      
+      v.fillStyle = 'white'; v.textAlign = 'right'; v.font = '36px Zpix'; v.strokeText(`${fsc}`, 340, 50); v.fillText(`${fsc}`, 340, 50)
       if (DX1 > 0) {
-        v.save(); v.globalAlpha = DX1; v.font = '24px sans-serif'; v.strokeText('+5', 340, 85); v.fillText('+5', 340, 85); v.restore(); DX1 -= 0.02
+        v.save(); v.globalAlpha = DX1; v.font = '24px Zpix'; v.strokeText('+5', 340, 85); v.fillText('+5', 340, 85); v.restore(); DX1 -= 0.02
       }
       if (!G1) {
         v.fillStyle = 'rgba(0,0,0,0.5)'; v.fillRect(0, 0, 360, 640)
-        v.fillStyle = 'white'; v.font = '36px sans-serif'; v.textAlign = 'center'
+        v.fillStyle = 'white'; v.font = '36px Zpix'; v.textAlign = 'center'
         v.fillText('Game Over', 180, 300); HH1(r1, 180, 380, 0.08)
       }
       WS1 = 0
@@ -107,10 +108,14 @@ export default function YX1() {
 
     cv.addEventListener('mousedown', CZ1); window.addEventListener('mousemove', YD1); window.addEventListener('mouseup', () => MG1 = false)
     cv.addEventListener('touchstart', CZ1, { passive: false }); cv.addEventListener('touchmove', YD1, { passive: false }); cv.addEventListener('touchend', () => MG1 = false)
-    i.onload = YX2
+    
+    document.fonts.load('36px Zpix').then(() => {
+      i.onload = YX2
+    })
+
     return () => { 
       window.removeEventListener('mousemove', YD1); window.removeEventListener('mouseup', () => MG1 = false)
-      yy.pause() 
+      document.removeEventListener('visibilitychange', YY1); yy.pause() 
     }
   }, [])
 
