@@ -21,7 +21,7 @@ export default function YX1() {
     
     const BF1 = () => { 
       const s = Math.random() > 0.5 ? s1 : s2
-      s.pause(); s.currentTime = 0; s.play().catch(() => {}) 
+      s.pause(); s.currentTime = 0.06; s.play().catch(() => {}) 
     }
     
     let ON1 = false, G1 = true, KS1 = false, QP1 = true, FX1 = 1
@@ -96,6 +96,7 @@ export default function YX1() {
     }
 
     const CZ1 = (e: MouseEvent | TouchEvent) => {
+      if (e.cancelable) e.preventDefault()
       const { x, y } = ZB1('touches' in e ? e.touches[0].clientX : e.clientX, 'touches' in e ? e.touches[0].clientY : e.clientY)
       if (Math.hypot(x - 35, y - 35) < 40) { ON1 = !ON1; ON1 ? yy.play().catch(() => {}) : yy.pause() }
       else if (Math.hypot(x - 35, y - 75) < 40) { QP1 = !QP1 }
@@ -105,6 +106,7 @@ export default function YX1() {
 
     const YD1 = (e: MouseEvent | TouchEvent) => {
       if (!MG1) return
+      if (e.cancelable) e.preventDefault()
       const { x, y } = ZB1('touches' in e ? e.touches[0].clientX : e.clientX, 'touches' in e ? e.touches[0].clientY : e.clientY)
       WS1 = x - ZW1; p1x = Math.max(0, Math.min(360, x)); p1y = Math.max(480, Math.min(640, y)); ZW1 = p1x
     }
