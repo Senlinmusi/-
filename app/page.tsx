@@ -14,8 +14,9 @@ export default function YX1() {
     yy.loop = true
     const s1 = new Audio('/音效.wav')
     const s2 = new Audio('/音效2.wav')
-    
+
     const YJ1 = () => {
+      yy.load()
       s1.load()
       s2.load()
     }
@@ -27,11 +28,15 @@ export default function YX1() {
       s.play().catch(() => {})
     }
 
+    const YB1 = () => {
+      if (ON1) yy.play().catch(() => {})
+    }
+
     let ON1 = false, G1 = true, KS1 = false, QP1 = true, FX1 = 1
     let qx = 180, qy = 100, vx = 5, vy = 5, qr = 0, p1x = 180, p1y = 585, p2x = 180, p2y = 100, fsc = 0
     let DX1 = 0, ZW1 = 180, WS1 = 0, MG1 = false
 
-    const YY1 = () => { if (document.hidden) yy.pause() }
+    const YY1 = () => { if (document.hidden) yy.pause(); else YB1() }
     document.addEventListener('visibilitychange', YY1)
 
     const ZY1 = (s: string) => { 
@@ -79,7 +84,7 @@ export default function YX1() {
           BF1()
         } else if (nqy > 640) { 
           G1 = false
-          if(ON1) yy.pause() 
+          yy.pause() 
         }
 
         if (nqy < p2y + 50 && nqy > p2y - 50 && nqx > p2x - 65 && nqx < p2x + 65) {
@@ -166,14 +171,14 @@ export default function YX1() {
       
       if (Math.hypot(x - 35, y - 35) < 40) { 
         ON1 = !ON1
-        ON1 ? yy.play().catch(() => {}) : yy.pause() 
+        ON1 ? YB1() : yy.pause() 
       } else if (Math.hypot(x - 35, y - 75) < 40) { 
         QP1 = !QP1 
       } else if (!G1 && Math.hypot(x - 180, y - 380) < 50) { 
         G1 = true; KS1 = true; fsc = 0; qx = 180; qy = 100; vx = 5; vy = 5; p1x = 180; p1y = 585; DX1 = 0; ZW1 = 180 
       } else { 
         MG1 = true; KS1 = true
-        if(ON1) yy.play().catch(() => {})
+        YB1()
         p1x = x; p1y = y; ZW1 = x 
       }
     }
